@@ -4,7 +4,7 @@ Heroku Buildpack for Node.js, Bower, and Gulp
 Usage
 -----
 
-- Create a new app using `heroku create --buildpack=https://github.com/robgraeber/heroku-buildpack-nodejs-bower-gulp.git`. To be safe, you should fork this and use your fork's URL.
+- Create a new app using `heroku create --buildpack=https://github.com/simau500/heroku-buildpack-nodejs-bower-gulp.git`. To be safe, you should fork this and use your fork's URL.
 - Add a Gulp task that builds your app. By default, the buildpack will call `gulp build`. 
  - To specify your own task: Run `heroku config:set GULP_TASK=build` (Or any other name).
 - Add a `bower.json`/`.bowerrc` file that will be used with `bower install`. Packages not in `bower.json`are pruned each build.
@@ -36,25 +36,13 @@ When the buildpack runs it will do many things similarly to the standard [Heroku
 
 The bower component caching is very similar to the node_modules caching done for npm. The cache is restored before each build and `bower prune` is run to remove anything no longer needed before doing the `bower install`. This is the same way the standard buildpack handles caching.
 
-Some Useful Aliases
------------------------
-I also like to create some useful aliases that help me deploy in 1-line. (Add the following to your .bash_profile):
-```
-alias heroku-create='heroku create --buildpack=https://github.com/robgraeber/heroku-buildpack-nodejs-bower-gulp.git'
-autoDeploy() {
-  heroku create $1 $2 $3 --buildpack=https://github.com/robgraeber/heroku-buildpack-nodejs-bower-gulp.git
-  git push heroku master
-  heroku open
-}
-alias heroku-create-auto=autoDeploy
-alias heroku-portal='open https://dashboard.heroku.com/apps'
-alias heroku-push='git push heroku master; heroku open'
-```
 
 Credits
 -------
 
-Forked from [heroku-buildpack-nodejs-gulp](https://github.com/timdp/heroku-buildpack-nodejs-gulp).
+Forked from [heroku-buildpack-nodejs-bower-gulp](https://github.com/robgraeber/heroku-buildpack-nodejs-bower-gulp).
+
+Which was forked from [heroku-buildpack-nodejs-gulp](https://github.com/timdp/heroku-buildpack-nodejs-gulp).
 
 Which was forked from [heroku-buildpack-nodejs](https://github.com/heroku/heroku-buildpack-nodejs).
 
